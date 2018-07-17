@@ -8,29 +8,33 @@ class App extends Component {
     this.state = {
       tasksList: [
         {
-          id: 1,
+          id: 0,
           task: "run"
         },
         {
-          id: 2,
+          id: 1,
           task: "wash dishes"
         },
         {
-          id: 3,
+          id: 2,
           task: "make a millie"
         },
         {
-          id: 4,
+          id: 3,
           task: "make a billie"
         },
-        {
-          id: 5,
-          task: "smile"
-        },
-        {
-          id: 5,
-          task: "a very super long item that's awesome"
-        }
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
       ]
     };
 
@@ -38,7 +42,7 @@ class App extends Component {
     this.update = this.update.bind(this);
     this.delete = this.delete.bind(this);
   }
-
+  componentDidUpdate() {}
   update(newText, i) {
     console.log("updating item at index", i, newText);
     this.setState(prevState => ({
@@ -58,7 +62,7 @@ class App extends Component {
   eachTaskItem(taskObject, i) {
     return (
       <TaskLineItem
-        key={taskObject.id}
+        key={i}
         onUpdate={this.update}
         onDelete={this.delete}
         taskValue={taskObject.task}

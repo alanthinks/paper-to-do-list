@@ -43,7 +43,7 @@
 
 .item-box {
   font-family: "Caveat", cursive;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   margin-left: -50px;
   padding-left: 60px;
   border-bottom: rgb(129, 201, 250) solid 1px;
@@ -53,12 +53,31 @@
   display: inline-block;
   width: 90%;
 }
+.item-text {
+  margin-left: 25px;
+}
+.item-box .check-box {
+  color: rgb(228, 227, 227);
+  display: inline-block;
+  margin-left: -50px;
+  font-size: 13px;
+}
+
+.item-box .check-box.complete {
+  color: black;
+}
+.item-box .check-box:hover {
+  color: rgb(1, 160, 73);
+  display: inline-block;
+  margin-left: -50px;
+  transition: 0.4s;
+}
 .item-text.done {
   text-decoration: line-through;
 }
 .item-box-edit input {
+  margin-left: 25px;
   width: 100%;
-
   border: none;
 }
 .item-box-edit input:focus {
