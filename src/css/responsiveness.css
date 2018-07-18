@@ -22,11 +22,20 @@
     right: 68%;
     top: 450px;
   }
+  .paper-container .paper-title h1,
+  .paper-container .paper-title h2 {
+    font-size: 0.8rem;
+  }
 }
+
 @media screen and (max-width: 865px) {
   .paper-container {
-    width: 400px;
-    height: 555px;
+    width: 50%;
+    height: 67%;
+  }
+
+  .sticky-note .row {
+    font-size: 1rem;
   }
   .sticky-note {
     right: 65%;
@@ -38,8 +47,89 @@
     font-size: 1.2rem;
     margin-left: -45px;
   }
+}
+
+@media screen and (max-width: 550px) {
+  .main-bg {
+    padding-top: 10%;
+  }
+  .paper-container {
+    margin: auto;
+    width: 80%;
+    height: 67%;
+  }
+  .paper-container .paper-title h1,
+  .paper-container .paper-title h2 {
+    font-size: 0.8rem;
+  }
+  .sticky-note {
+    left: 10%;
+    top: 60%;
+    height: 150px;
+    width: 150px;
+  }
+  .item-box {
+    margin-left: -45px;
+  }
+  .sticky-note .row {
+    font-size: 0.9rem;
+  }
+  .sticky-note .row .col-8 {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .paper-container .paper-title h1,
+  .paper-container .paper-title h2 {
+    font-size: 0.7rem;
+  }
+  .item-box {
+    font-size: 1.2rem;
+  }
+  .sticky-note {
+    left: 10;
+    top: 60%;
+  }
+}
+@media screen and (max-height: 900px) {
+  .paper-container {
+    height: 75%;
+  }
+  .sticky-note {
+    left: 10%;
+    top: 73%;
+    height: 200px;
+    width: 200px;
+  }
   .sticky-note .row {
     font-size: 1rem;
-    margin-top: ;
+  }
+}
+@media screen and (max-height: 800px) {
+  .paper-container {
+    height: 85%;
+  }
+  .sticky-note {
+    left: 10%;
+    top: 78%;
+  }
+}
+@media screen and (max-height: 700px) {
+  .paper-container {
+    height: 90%;
+  }
+  .sticky-note {
+    left: 10%;
+    top: 78%;
+  }
+}
+@media screen and (max-height: 600px) {
+  .paper-container {
+    height: 97%;
+  }
+  .sticky-note {
+    left: 10%;
+    top: 71%;
   }
 }

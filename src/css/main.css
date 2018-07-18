@@ -14,7 +14,11 @@
 .main-bg {
   /* background-image: url("../img/desk-lg.jpg"); */
   background-size: cover;
-  background-position: top;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   height: 100vh;
   background-color: black;
   padding-top: 80px;
@@ -129,6 +133,7 @@ input {
 }
 
 .sticky-note {
+  z-index: 1;
   position: absolute;
   right: 45%;
   top: 400px;
