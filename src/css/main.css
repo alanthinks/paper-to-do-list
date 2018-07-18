@@ -16,7 +16,7 @@
   height: 700px;
   background-color: white;
   margin-left: auto;
-  margin-right: 10%;
+  margin-right: 7%;
   box-shadow: 2px 2px 20px black;
 }
 
@@ -116,4 +116,38 @@ input {
 }
 .btn-delete:hover {
   color: red;
+}
+
+.sticky-note {
+  position: absolute;
+  right: 50%;
+  top: 400px;
+  background-image: url("../img/sticky-note.png");
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  width: 250px;
+  transform: rotate(-4deg);
+}
+
+.sticky-note .row {
+  font-family: "Caveat", cursive;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 70px;
+  margin-left: 25px;
+}
+
+.sticky-note .col p {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.sticky-note .row .col {
+  padding-left: 0px;
+  margin-left: -10px;
+}
+
+.sticky-note .row .col-8 {
+  padding-right: 0px;
 }
