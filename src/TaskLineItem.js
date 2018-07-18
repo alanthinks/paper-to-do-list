@@ -41,7 +41,7 @@ class TaskLineItem extends Component {
   }
 
   delete() {
-    this.props.onDelete(this.props.index);
+    this.props.onDelete(this.state.taskIndex);
   }
 
   save(e) {
