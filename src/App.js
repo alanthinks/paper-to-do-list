@@ -51,10 +51,9 @@ class App extends Component {
   }
 
   delete(i) {
-    console.log("removing task at", i);
-    this.setState(prevState => ({
-      tasksList: prevState.tasksList.filter(task => task.key !== i)
-    }));
+    let tasksArray = this.state.tasksList;
+    tasksArray[i].task = "";
+    this.setState({ tasksList: tasksArray });
   }
 
   eachTaskItem(taskObject, i) {

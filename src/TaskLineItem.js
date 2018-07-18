@@ -42,6 +42,7 @@ class TaskLineItem extends Component {
 
   delete() {
     this.props.onDelete(this.state.taskIndex);
+    this.setState({ taskInput: "" });
   }
 
   save(e) {
