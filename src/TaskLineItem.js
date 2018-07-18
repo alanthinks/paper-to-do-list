@@ -8,9 +8,10 @@ class TaskLineItem extends Component {
       editing: false,
       taskDone: false,
       textDoneStyle: "item-text",
-      checkBoxStyle: "check-box",
+      checkMarkStyle: "checkmark",
       taskInput: this.props.taskValue,
-      taskIndex: this.props.index
+      taskIndex: this.props.index,
+      ateCookies: false
     };
 
     this.selectedInput = React.createRef();
@@ -20,7 +21,7 @@ class TaskLineItem extends Component {
     this.save = this.save.bind(this);
     this.editRender = this.editRender.bind(this);
     this.initialRender = this.initialRender.bind(this);
-    this.checkBox = this.checkBox.bind(this);
+    this.checkMark = this.checkMark.bind(this);
     this.inputBlur = this.inputBlur.bind(this);
   }
 
@@ -43,6 +44,7 @@ class TaskLineItem extends Component {
   delete() {
     this.props.onDelete(this.state.taskIndex);
     this.setState({ taskInput: "" });
+    this.checkMark();
   }
 
   save(e) {
@@ -53,21 +55,34 @@ class TaskLineItem extends Component {
     });
   }
 
-  checkBox() {
+  checkMark() {
     if (this.state.taskDone) {
       this.setState({
-        checkBoxStyle: "check-box",
+        checkMarkStyle: "checkmark",
         textDoneStyle: "item-text",
         taskDone: false,
         editing: false
       });
     } else {
       this.setState({
-        checkBoxStyle: "check-box complete",
+        checkMarkStyle: "checkmark complete",
         textDoneStyle: "item-text done",
         taskDone: true,
         editing: false
       });
+    }
+    if (
+      this.state.taskInput.toLowerCase().includes("eat cookies") &&
+      !this.state.ateCookies
+    ) {
+      this.setState({ ateCookies: true });
+      this.props.eatCookies(true);
+    } else if (
+      this.state.taskInput.toLowerCase().includes("eat cookies") &&
+      this.state.ateCookies
+    ) {
+      this.setState({ ateCookies: false });
+      this.props.eatCookies(false);
     }
   }
 
@@ -80,7 +95,7 @@ class TaskLineItem extends Component {
     if (this.state.taskInput) {
       return (
         <div className="item-box">
-          <div className={this.state.checkBoxStyle} onClick={this.checkBox}>
+          <div className={this.state.checkMarkStyle} onClick={this.checkMark}>
             <i className="fas fa-check" />
           </div>
           <form className="item-box-edit" onSubmit={this.save}>
@@ -114,7 +129,7 @@ class TaskLineItem extends Component {
   initialRender() {
     return (
       <div className="item-box">
-        <div className={this.state.checkBoxStyle} onClick={this.checkBox}>
+        <div className={this.state.checkMarkStyle} onClick={this.checkMark}>
           <i className="fas fa-check" />
         </div>
         <div className={this.state.textDoneStyle} onClick={this.edit}>

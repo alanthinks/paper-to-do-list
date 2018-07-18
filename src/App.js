@@ -6,22 +6,24 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      ateCookies: false,
+      cookieStyle: "main-bg cookies container-flex",
       tasksList: [
         {
           id: 0,
-          task: "Eat Cookies"
+          task: "Eat Cookies 😎🍪"
         },
         {
           id: 1,
-          task: "Run"
+          task: "Run 🏃‍♀"
         },
         {
           id: 2,
-          task: "Make a Millie"
+          task: "Make a Millie💸"
         },
         {
           id: 3,
-          task: "Make a Billie 😎"
+          task: "Make a Billie 🤑"
         },
         {},
         {},
@@ -40,6 +42,7 @@ class App extends Component {
     this.eachTaskItem = this.eachTaskItem.bind(this);
     this.update = this.update.bind(this);
     this.delete = this.delete.bind(this);
+    this.eatCookies = this.eatCookies.bind(this);
   }
   componentDidUpdate() {}
 
@@ -84,12 +87,27 @@ class App extends Component {
         onUpdate={this.update}
         onDelete={this.delete}
         taskValue={taskObject.task}
+        eatCookies={this.eatCookies}
       />
     );
   }
+
+  eatCookies(ateCookies) {
+    if (!this.state.ateCookies && !ateCookies) {
+      this.setState({
+        ateCookies: true,
+        cookieStyle: "main-bg cookies container-flex"
+      });
+    } else {
+      this.setState({
+        ateCookies: false,
+        cookieStyle: "main-bg no-cookies container-flex"
+      });
+    }
+  }
   render() {
     return (
-      <div className="main-bg container-flex">
+      <div className={this.state.cookieStyle}>
         <div className="sticky-note">
           <div className="row">
             <div className="col-8">

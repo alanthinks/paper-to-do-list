@@ -1,8 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Rock+Salt");
 @import url("https://fonts.googleapis.com/css?family=Caveat");
 
+.main-bg.cookies {
+  background-image: url("../img/desk-lg-cookies.jpg");
+}
+.main-bg.no-cookies {
+  background-image: url("../img/desk-lg-no-cookies.jpg");
+}
 .main-bg {
-  background-image: url("../img/desk-lg.jpg");
+  /* background-image: url("../img/desk-lg.jpg"); */
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -56,17 +62,17 @@
 .item-text {
   margin-left: 25px;
 }
-.item-box .check-box {
+.item-box .checkmark {
   color: rgb(228, 227, 227);
   display: inline-block;
   margin-left: -50px;
   font-size: 13px;
 }
 
-.item-box .check-box.complete {
+.item-box .checkmark.complete {
   color: black;
 }
-.item-box .check-box:hover {
+.item-box .checkmark:hover {
   color: rgb(155, 155, 155);
   display: inline-block;
   margin-left: -50px;
