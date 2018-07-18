@@ -8,7 +8,9 @@ class TaskLineItem extends Component {
       editing: false,
       taskDone: false,
       textDoneStyle: "item-text",
-      checkBoxStyle: "check-box"
+      checkBoxStyle: "check-box",
+      taskInput: this.props.taskValue,
+      taskIndex: this.props.index
     };
 
     this.selectedInput = React.createRef();
@@ -16,24 +18,21 @@ class TaskLineItem extends Component {
     this.edit = this.edit.bind(this);
     this.delete = this.delete.bind(this);
     this.save = this.save.bind(this);
-    this.renderEdit = this.renderEdit.bind(this);
-    this.renderItem = this.renderItem.bind(this);
+    this.editRender = this.editRender.bind(this);
+    this.initialRender = this.initialRender.bind(this);
     this.checkBox = this.checkBox.bind(this);
+    this.inputBlur = this.inputBlur.bind(this);
   }
 
   componentDidUpdate() {
-    let currentInput;
-    if (this.state.editing) {
-      currentInput = this.selectedInput.current;
-      currentInput.focus();
+    if (this.state.taskInput) {
+      let currentInput;
+      if (this.state.editing) {
+        currentInput = this.selectedInput.current;
+        currentInput.focus();
+      }
     }
   }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return (
-  //     this.props.children !== nextProps.children || this.state !== nextState
-  //   );
-  // }
 
   edit() {
     this.setState({
@@ -47,7 +46,7 @@ class TaskLineItem extends Component {
 
   save(e) {
     e.preventDefault();
-    this.props.onUpdate(this._newText.value, this.props.index);
+    this.props.onUpdate(this.state.taskInput, this.state.taskIndex);
     this.setState({
       editing: false
     });
@@ -55,7 +54,6 @@ class TaskLineItem extends Component {
 
   checkBox() {
     if (this.state.taskDone) {
-      console.log("task now not done");
       this.setState({
         checkBoxStyle: "check-box",
         textDoneStyle: "item-text",
@@ -63,8 +61,6 @@ class TaskLineItem extends Component {
         editing: false
       });
     } else {
-      console.log("task now done");
-
       this.setState({
         checkBoxStyle: "check-box complete",
         textDoneStyle: "item-text done",
@@ -74,32 +70,26 @@ class TaskLineItem extends Component {
     }
   }
 
-  renderEdit() {
-    return (
-      <div className="item-box">
-        <div className={this.state.checkBoxStyle} onClick={this.checkBox}>
-          <i className="fas fa-check" />
-        </div>
-        <form className="item-box-edit" onSubmit={this.save}>
-          <input defaultValue={this.props.taskValue} ref={this.selectedInput} />
-        </form>
-        <div className="btn-delete" onClick={this.delete}>
-          <i className="far fa-trash-alt" />
-        </div>
-      </div>
-    );
+  inputBlur() {
+    this.save();
   }
 
-  renderItem() {
-    if (this.props.taskValue) {
+  editRender() {
+    if (!this.state.editing) this.setState({ editing: true });
+    if (this.state.taskInput) {
       return (
         <div className="item-box">
           <div className={this.state.checkBoxStyle} onClick={this.checkBox}>
             <i className="fas fa-check" />
           </div>
-          <div className={this.state.textDoneStyle} onClick={this.edit}>
-            {this.props.taskValue}
-          </div>
+          <form className="item-box-edit" onSubmit={this.save}>
+            <input
+              ref={this.selectedInput}
+              onChange={e => this.setState({ taskInput: e.target.value })}
+              value={this.state.taskInput}
+              onBlur={this.save}
+            />
+          </form>
           <div className="btn-delete" onClick={this.delete}>
             <i className="far fa-trash-alt" />
           </div>
@@ -108,15 +98,37 @@ class TaskLineItem extends Component {
     } else {
       return (
         <div className="item-box">
-          <div className={this.state.textDoneStyle} onClick={this.edit}>
-            {this.props.taskValue}
-          </div>
+          <form className="item-box-blank initial" onSubmit={this.save}>
+            <input
+              ref={this.selectedInput}
+              onChange={e => this.setState({ taskInput: e.target.value })}
+              value={this.state.taskInput}
+            />
+          </form>
         </div>
       );
     }
   }
+
+  initialRender() {
+    return (
+      <div className="item-box">
+        <div className={this.state.checkBoxStyle} onClick={this.checkBox}>
+          <i className="fas fa-check" />
+        </div>
+        <div className={this.state.textDoneStyle} onClick={this.edit}>
+          {this.state.taskInput}
+        </div>
+        <div className="btn-delete" onClick={this.delete}>
+          <i className="far fa-trash-alt" />
+        </div>
+      </div>
+    );
+  }
   render() {
-    return this.state.editing ? this.renderEdit() : this.renderItem();
+    return this.state.editing || !this.state.taskInput
+      ? this.editRender()
+      : this.initialRender();
   }
 }
 

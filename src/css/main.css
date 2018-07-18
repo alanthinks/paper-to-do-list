@@ -67,7 +67,7 @@
   color: black;
 }
 .item-box .check-box:hover {
-  color: rgb(1, 160, 73);
+  color: rgb(155, 155, 155);
   display: inline-block;
   margin-left: -50px;
   transition: 0.4s;
@@ -75,15 +75,32 @@
 .item-text.done {
   text-decoration: line-through;
 }
+input {
+  background: none;
+  height: 96%;
+}
+.item-box-blank.initial input {
+  margin-left: -15px;
+  width: 100%;
+  border: none;
+}
+.item-box-blank.initial input:focus {
+  margin-left: -15px;
+  width: 100%;
+  border: none;
+  outline: none !important;
+  border-bottom: 1px solid red;
+  box-shadow: none;
+}
 .item-box-edit input {
   margin-left: 25px;
   width: 100%;
   border: none;
+  border-bottom: 1px solid red;
+  box-shadow: none;
 }
 .item-box-edit input:focus {
   outline: none !important;
-  border-bottom: 1px solid red;
-  box-shadow: none;
 }
 
 .btn-delete {

@@ -23,18 +23,17 @@ class App extends Component {
           id: 3,
           task: "make a billie"
         },
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
       ]
     };
 
@@ -43,25 +42,25 @@ class App extends Component {
     this.delete = this.delete.bind(this);
   }
   componentDidUpdate() {}
-  update(newText, i) {
-    console.log("updating item at index", i, newText);
-    this.setState(prevState => ({
-      notes: prevState.notes.map(
-        note => (note.id !== i ? note : { ...note, note: newText })
-      )
-    }));
+
+  update(updatedTask, i) {
+    console.log(updatedTask, i);
+    let tasksArray = this.state.tasksList;
+    tasksArray[i].task = updatedTask;
+    this.setState({ tasksList: tasksArray });
   }
 
-  delete(id) {
-    console.log("removing item at", id);
+  delete(i) {
+    console.log("removing task at", i);
     this.setState(prevState => ({
-      tasksList: prevState.tasksList.filter(task => task.id !== id)
+      tasksList: prevState.tasksList.filter(task => task.key !== i)
     }));
   }
 
   eachTaskItem(taskObject, i) {
     return (
       <TaskLineItem
+        index={i}
         key={i}
         onUpdate={this.update}
         onDelete={this.delete}
