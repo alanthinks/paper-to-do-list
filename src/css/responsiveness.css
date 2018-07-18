@@ -1,0 +1,45 @@
+@media screen and (max-width: 1410px) {
+  .sticky-note {
+    right: 50%;
+  }
+}
+
+@media screen and (max-width: 1212px) {
+  .sticky-note {
+    right: 58%;
+  }
+}
+
+@media screen and (max-width: 1039px) {
+  .sticky-note {
+    right: 65%;
+    top: 450px;
+  }
+}
+
+@media screen and (max-width: 898px) {
+  .sticky-note {
+    right: 68%;
+    top: 450px;
+  }
+}
+@media screen and (max-width: 865px) {
+  .paper-container {
+    width: 400px;
+    height: 555px;
+  }
+  .sticky-note {
+    right: 65%;
+    top: 450px;
+    height: 185px;
+    width: 185px;
+  }
+  .item-box {
+    font-size: 1.2rem;
+    margin-left: -45px;
+  }
+  .sticky-note .row {
+    font-size: 1rem;
+    margin-top: ;
+  }
+}

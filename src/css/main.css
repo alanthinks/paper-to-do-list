@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Rock+Salt");
 @import url("https://fonts.googleapis.com/css?family=Caveat");
+#preload-cookies {
+  background: url(../img/desk-lg-no-cookies.jpg) no-repeat -9999px -9999px;
+  visibility: hidden;
+}
 
 .main-bg.cookies {
   background-image: url("../img/desk-lg-cookies.jpg");
@@ -10,7 +14,7 @@
 .main-bg {
   /* background-image: url("../img/desk-lg.jpg"); */
   background-size: cover;
-  background-position: center;
+  background-position: top;
   height: 100vh;
   background-color: black;
   padding-top: 80px;
@@ -126,7 +130,7 @@ input {
 
 .sticky-note {
   position: absolute;
-  right: 50%;
+  right: 45%;
   top: 400px;
   background-image: url("../img/sticky-note.png");
   background-size: cover;
@@ -140,12 +144,11 @@ input {
   font-family: "Caveat", cursive;
   font-size: 1.4rem;
   font-weight: 600;
-  margin-top: 70px;
+  margin-top: 26%;
   margin-left: 25px;
 }
 
 .sticky-note .col p {
-  font-size: 1.5rem;
   font-weight: 900;
 }
 
@@ -156,4 +159,8 @@ input {
 
 .sticky-note .row .col-8 {
   padding-right: 0px;
+}
+
+.sticky-note .row p {
+  margin-bottom: 0;
 }

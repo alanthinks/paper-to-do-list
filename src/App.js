@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./css/main.css";
+import "./css/responsiveness.css";
+
 import TaskLineItem from "./TaskLineItem";
 
 class App extends Component {
@@ -8,24 +10,36 @@ class App extends Component {
     this.state = {
       ateCookies: false,
       cookieStyle: "main-bg cookies container-flex",
+      taskCounter: 5,
+      deleteCounter: 0,
+      completedCounter: 1,
+      cookieCounter: 0,
       tasksList: [
         {
           id: 0,
-          task: "Eat Cookies 😎🍪"
+          task: "Eat Cookies 😎🍪",
+          isDone: false
         },
         {
           id: 1,
-          task: "Run 🏃‍♀"
+          task: "Run 🏃‍♀",
+          isDone: false
         },
         {
           id: 2,
-          task: "Make a Millie💸"
+          task: "Make a Millie💸",
+          isDone: false
         },
         {
           id: 3,
-          task: "Make a Billie 🤑"
+          task: "Make a Billie 🤑",
+          isDone: false
         },
-        {},
+        {
+          id: 3,
+          task: "To-Do App, better Done than Pefect",
+          isDone: true
+        },
         {},
         {},
         {},
@@ -43,6 +57,8 @@ class App extends Component {
     this.update = this.update.bind(this);
     this.delete = this.delete.bind(this);
     this.eatCookies = this.eatCookies.bind(this);
+    this.completedTasksCounter = this.completedTasksCounter.bind(this);
+    this.taskCounter = this.taskCounter.bind(this);
   }
   componentDidUpdate() {}
 
@@ -51,6 +67,7 @@ class App extends Component {
     let tasksArray = this.state.tasksList;
     tasksArray[i].task = updatedTask;
     this.setState({ tasksList: tasksArray });
+    this.taskCounter();
   }
 
   // delete(i) {
@@ -66,30 +83,14 @@ class App extends Component {
   //   );
   // }
   delete(i) {
-    console.log("delete() called");
-    console.log("state.tasks.tasksList before splice", this.state.tasksList);
-
     let currentTaskList = this.state.tasksList;
     currentTaskList[i] = {};
 
-    this.setState({ tasksList: currentTaskList });
-    console.log(
-      "state.tasks.tasksList AFTER splice & setState",
-      this.state.tasksList
-    );
-  }
-
-  eachTaskItem(taskObject, i) {
-    return (
-      <TaskLineItem
-        index={i}
-        key={i}
-        onUpdate={this.update}
-        onDelete={this.delete}
-        taskValue={taskObject.task}
-        eatCookies={this.eatCookies}
-      />
-    );
+    this.setState({
+      deleteCounter: this.state.deleteCounter + 1,
+      tasksList: currentTaskList
+    });
+    this.taskCounter();
   }
 
   eatCookies(ateCookies) {
@@ -100,25 +101,76 @@ class App extends Component {
       });
     } else {
       this.setState({
+        cookieCounter: this.state.cookieCounter + 1,
         ateCookies: false,
         cookieStyle: "main-bg no-cookies container-flex"
       });
     }
   }
+
+  completedTasksCounter(isChecked) {
+    if (isChecked) {
+      this.setState({ completedCounter: this.state.completedCounter + 1 });
+    } else {
+      this.setState({ completedCounter: this.state.completedCounter - 1 });
+    }
+  }
+  taskCounter() {
+    let totalTaskCounter = 0;
+    this.state.tasksList.map(taskObject => {
+      if (taskObject.task) {
+        totalTaskCounter += 1;
+      }
+      totalTaskCounter -= 0;
+    });
+    console.log("count", totalTaskCounter);
+    this.setState({ taskCounter: totalTaskCounter });
+  }
+
+  eachTaskItem(taskObject, i) {
+    let checkMarkStyle;
+    let textDoneStyle;
+    if (taskObject.isDone) {
+      checkMarkStyle = "checkmark complete";
+      textDoneStyle = "item-text done";
+    } else {
+      checkMarkStyle = "checkmark";
+      textDoneStyle = "item-text";
+    }
+
+    return (
+      <TaskLineItem
+        index={i}
+        key={i}
+        onUpdate={this.update}
+        onDelete={this.delete}
+        taskValue={taskObject.task}
+        eatCookies={this.eatCookies}
+        isDone={taskObject.isDone}
+        addCompletedCounter={this.completedTasksCounter}
+        checkMarkStyle={checkMarkStyle}
+        textDoneStyle={textDoneStyle}
+        totalTaskCounter={this.taskCounter}
+      />
+    );
+  }
   render() {
     return (
       <div className={this.state.cookieStyle}>
+        <span id="preload-cookies" />
         <div className="sticky-note">
           <div className="row">
             <div className="col-8">
               <p>Current Tasks:</p>
               <p>Completed:</p>
               <p>Deleted:</p>
+              <p>Cookies:</p>
             </div>
             <div className="col">
-              <p>22</p>
-              <p>3</p>
-              <p>12</p>
+              <p>{this.state.taskCounter}</p>
+              <p>{this.state.completedCounter}</p>
+              <p>{this.state.deleteCounter}</p>
+              <p>{this.state.cookieCounter}</p>
             </div>
           </div>
         </div>

@@ -6,9 +6,9 @@ class TaskLineItem extends Component {
     super(props);
     this.state = {
       editing: false,
-      taskDone: false,
-      textDoneStyle: "item-text",
-      checkMarkStyle: "checkmark",
+      taskDone: this.props.isDone,
+      checkMarkStyle: this.props.checkMarkStyle,
+      textDoneStyle: this.props.textDoneStyle,
       taskInput: this.props.taskValue,
       taskIndex: this.props.index,
       ateCookies: false
@@ -63,6 +63,7 @@ class TaskLineItem extends Component {
         taskDone: false,
         editing: false
       });
+      this.props.addCompletedCounter(false);
     } else {
       this.setState({
         checkMarkStyle: "checkmark complete",
@@ -70,15 +71,18 @@ class TaskLineItem extends Component {
         taskDone: true,
         editing: false
       });
+      this.props.addCompletedCounter(true);
     }
+    const thisInput = this.state.taskInput.toLowerCase();
+
     if (
-      this.state.taskInput.toLowerCase().includes("eat cookies") &&
+      (thisInput.includes("cookie") || thisInput.includes("galleta")) &&
       !this.state.ateCookies
     ) {
       this.setState({ ateCookies: true });
       this.props.eatCookies(true);
     } else if (
-      this.state.taskInput.toLowerCase().includes("eat cookies") &&
+      (thisInput.includes("cookie") || thisInput.includes("galleta")) &&
       this.state.ateCookies
     ) {
       this.setState({ ateCookies: false });
@@ -100,6 +104,7 @@ class TaskLineItem extends Component {
           </div>
           <form className="item-box-edit" onSubmit={this.save}>
             <input
+              maxLength="22"
               ref={this.selectedInput}
               onChange={e => this.setState({ taskInput: e.target.value })}
               value={this.state.taskInput}
@@ -111,19 +116,19 @@ class TaskLineItem extends Component {
           </div>
         </div>
       );
-    } else {
-      return (
-        <div className="item-box">
-          <form className="item-box-blank initial" onSubmit={this.save}>
-            <input
-              ref={this.selectedInput}
-              onChange={e => this.setState({ taskInput: e.target.value })}
-              value={this.state.taskInput}
-            />
-          </form>
-        </div>
-      );
     }
+    return (
+      <div className="item-box">
+        <form className="item-box-blank initial" onSubmit={this.save}>
+          <input
+            maxLength="22"
+            ref={this.selectedInput}
+            onChange={e => this.setState({ taskInput: e.target.value })}
+            value={this.state.taskInput}
+          />
+        </form>
+      </div>
+    );
   }
 
   initialRender() {
