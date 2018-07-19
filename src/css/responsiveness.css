@@ -93,10 +93,10 @@
   }
 }
 
-@media screen and (max-height: 800px) {
+/* @media screen and (max-height: 800) {
   .paper-container {
     /* line-height: 1.5; */
-    height: 550px;
+/* height: 550px;
   }
   .sticky-note {
     left: 25%;
@@ -108,11 +108,8 @@
   .btn-delete {
     font-size: 0.55rem;
   }
-}
+} */
 @media screen and (max-height: 700px) {
-  .paper-container {
-    /* height: 90%; */
-  }
   .sticky-note {
     left: 10%;
     top: 75%;
