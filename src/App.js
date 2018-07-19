@@ -117,13 +117,14 @@ class App extends Component {
   }
   taskCounter() {
     let totalTaskCounter = 0;
-    this.state.tasksList.map(taskObject => {
+
+    this.state.tasksList.forEach(function(taskObject) {
       if (taskObject.task) {
         totalTaskCounter += 1;
       }
       totalTaskCounter -= 0;
     });
-    console.log("count", totalTaskCounter);
+
     this.setState({ taskCounter: totalTaskCounter });
   }
 

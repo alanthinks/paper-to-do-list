@@ -42,9 +42,18 @@ class TaskLineItem extends Component {
   }
 
   delete() {
+    if (this.state.taskDone) {
+      this.props.addCompletedCounter(false);
+    }
+
     this.props.onDelete(this.state.taskIndex);
-    this.setState({ taskInput: "" });
-    this.checkMark();
+    this.setState({
+      taskDone: false,
+      editing: false,
+      checkMarkStyle: "checkmark",
+      textDoneStyle: "item-text",
+      taskInput: ""
+    });
   }
 
   save(e) {
