@@ -95,7 +95,8 @@
 
 @media screen and (max-height: 800px) {
   .paper-container {
-    line-height: 1.5;
+    /* line-height: 1.5; */
+    height: 550px;
   }
   .sticky-note {
     left: 25%;
@@ -107,7 +108,7 @@
 }
 @media screen and (max-height: 700px) {
   .paper-container {
-    height: 90%;
+    /* height: 90%; */
   }
   .sticky-note {
     left: 10%;
@@ -116,7 +117,7 @@
 }
 @media screen and (max-height: 600px) {
   .paper-container {
-    height: 97%;
+    /* height: 97%; */
   }
   .sticky-note {
     left: 10%;
@@ -129,17 +130,20 @@
     visibility: hidden;
   }
 }
-@media screen and (max-height: 1000px) and (max-width: 1000px) {
-  .sticky-note {
-    left: 10%;
-    top: 87%;
-    visibility: visible;
-  }
+@media (orientation: landscape) {
   .main-bg {
     height: 100vw;
   }
+}
+@media screen and (max-height: 1000px) and (max-width: 1000px) {
+  .sticky-note {
+    left: 10%;
+    top: 67%;
+    visibility: visible;
+  }
+
   .paper-container {
-    height: 550px;
+    /* height: 550px; */
   }
 }
 @media screen and (max-height: 900px) and (max-width: 600px) {
