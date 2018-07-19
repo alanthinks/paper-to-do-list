@@ -94,7 +94,7 @@ class App extends Component {
   }
 
   eatCookies(ateCookies) {
-    if (!this.state.ateCookies && !ateCookies) {
+    if (!this.state.ateCookies && ateCookies) {
       this.setState({
         ateCookies: true,
         cookieStyle: "main-bg cookies container-flex"
