@@ -92,41 +92,7 @@
     top: 60%;
   }
 }
-@media screen and (max-height: 1000px) and (max-width: 1000px) {
-  .paper-container {
-    /* height: 85%; */
-  }
-  .sticky-note {
-    left: 10%;
-    top: 50%;
-  }
-}
-@media screen and (max-height: 900px) and (max-width: 600px) {
-  .paper-container {
-    /* height: 75%; */
-  }
-  .sticky-note {
-    left: 10%;
-    top: 73%;
-    height: 150px;
-    width: 150px;
-  }
-  .sticky-note .row {
-    font-size: 1rem;
-  }
-  .main-bg.cookies {
-    background-image: url("../img/desk-sm-cookies.jpg");
-  }
-  .main-bg.no-cookies {
-    background-image: url("../img/desk-sm-no-cookies.jpg");
-  }
 
-  .main-bg {
-    background-position-x: left;
-    background-position-y: top;
-    height: 750px;
-  }
-}
 @media screen and (max-height: 800px) {
   .paper-container {
     line-height: 1.5;
@@ -161,5 +127,41 @@
 @media screen and (max-height: 550px) {
   .sticky-note {
     visibility: hidden;
+  }
+}
+@media screen and (max-height: 1000px) and (max-width: 1000px) {
+  .sticky-note {
+    left: 10%;
+    top: 87%;
+    visibility: visible;
+  }
+  .main-bg {
+    height: 100vw;
+  }
+  .paper-container {
+    height: 550px;
+  }
+}
+@media screen and (max-height: 900px) and (max-width: 600px) {
+  .sticky-note {
+    left: 10%;
+    top: 73%;
+    height: 150px;
+    width: 150px;
+  }
+  .sticky-note .row {
+    font-size: 1rem;
+  }
+  .main-bg.cookies {
+    background-image: url("../img/desk-sm-cookies.jpg");
+  }
+  .main-bg.no-cookies {
+    background-image: url("../img/desk-sm-no-cookies.jpg");
+  }
+
+  .main-bg {
+    background-position-x: left;
+    background-position-y: top;
+    height: 750px;
   }
 }
