@@ -103,7 +103,10 @@
     top: 65%;
   }
   .item-box {
-    font-size: 1.2rem;
+    font-size: 1rem;
+  }
+  .btn-delete {
+    font-size: 0.55rem;
   }
 }
 @media screen and (max-height: 700px) {
@@ -138,7 +141,7 @@
 @media screen and (max-height: 1000px) and (max-width: 1000px) {
   .sticky-note {
     left: 10%;
-    top: 67%;
+    top: 75%;
     visibility: visible;
   }
 
