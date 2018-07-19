@@ -133,7 +133,7 @@
     visibility: hidden;
   }
 }
-@media (orientation: landscape) {
+@media screen and (max-height: 500px) and (orientation: landscape) {
   .main-bg {
     height: 100vw;
   }
