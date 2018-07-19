@@ -4,6 +4,10 @@
   background: url(../img/desk-lg-no-cookies.jpg) no-repeat -9999px -9999px;
   visibility: hidden;
 }
+#preload-cookies-mobile {
+  background: url(../img/desk-sm-no-cookies.jpg) no-repeat -9999px -9999px;
+  visibility: hidden;
+}
 
 .main-bg.cookies {
   background-image: url("../img/desk-lg-cookies.jpg");

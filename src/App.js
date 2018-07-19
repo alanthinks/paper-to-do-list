@@ -158,6 +158,8 @@ class App extends Component {
     return (
       <div className={this.state.cookieStyle}>
         <span id="preload-cookies" />
+        <span id="preload-cookies-mobile" />
+
         <div className="sticky-note">
           <div className="row">
             <div className="col-8">

@@ -106,6 +106,18 @@
   .sticky-note .row {
     font-size: 1rem;
   }
+  .main-bg.cookies {
+    background-image: url("../img/desk-sm-cookies.jpg");
+  }
+  .main-bg.no-cookies {
+    background-image: url("../img/desk-sm-no-cookies.jpg");
+  }
+
+  .main-bg {
+    background-position-x: left;
+    background-position-y: top;
+    height: 750px;
+  }
 }
 @media screen and (max-height: 800px) {
   .paper-container {
@@ -132,5 +144,11 @@
   .sticky-note {
     left: 10%;
     top: 70%;
+  }
+}
+
+@media screen and (max-height: 550px) {
+  .sticky-note {
+    visibility: hidden;
   }
 }
