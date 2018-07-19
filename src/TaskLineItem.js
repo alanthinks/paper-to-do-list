@@ -58,6 +58,14 @@ class TaskLineItem extends Component {
 
   save(e) {
     e.preventDefault();
+    const thisInput = this.state.taskInput;
+    if (
+      (thisInput.includes("cookie") || thisInput.includes("galleta")) &&
+      !this.state.ateCookies
+    ) {
+      this.setState({ ateCookies: false });
+      this.props.eatCookies(false);
+    }
     this.props.onUpdate(this.state.taskInput, this.state.taskIndex);
     this.setState({
       editing: false
