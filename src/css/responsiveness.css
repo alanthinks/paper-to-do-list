@@ -129,7 +129,7 @@
 }
 @media screen and (max-height: 800px) {
   .paper-container {
-    line-height: 1.5rem;
+    line-height: 1.5;
   }
   .sticky-note {
     left: 25%;
