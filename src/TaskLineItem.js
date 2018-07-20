@@ -11,7 +11,8 @@ class TaskLineItem extends Component {
       textDoneStyle: this.props.textDoneStyle,
       taskInput: this.props.taskValue,
       taskIndex: this.props.index,
-      ateCookies: false
+      ateCookies: false,
+      focused: this.props.focused
     };
 
     this.selectedInput = React.createRef();
@@ -59,7 +60,10 @@ class TaskLineItem extends Component {
   save(e) {
     e.preventDefault();
     const thisInput = this.state.taskInput;
-    if (thisInput.includes("cookie") || thisInput.includes("galleta")) {
+    if (
+      this.state.taskInput &&
+      (thisInput.includes("cookie") || thisInput.includes("galleta"))
+    ) {
       this.setState({ ateCookies: false });
       this.props.eatCookies(true);
     }
@@ -161,7 +165,7 @@ class TaskLineItem extends Component {
     );
   }
   render() {
-    return this.state.editing || !this.state.taskInput
+    return this.state.editing || !this.state.taskInput || this.state.focused
       ? this.editRender()
       : this.initialRender();
   }

@@ -18,27 +18,32 @@ class App extends Component {
         {
           id: 0,
           task: "Eat Cookies 😎🍪",
-          isDone: false
+          isDone: false,
+          focused: false
         },
         {
           id: 1,
           task: "Run 🏃‍♀",
-          isDone: false
+          isDone: false,
+          focused: false
         },
         {
           id: 2,
           task: "Make a Millie💸",
-          isDone: false
+          isDone: false,
+          focused: false
         },
         {
           id: 3,
           task: "Make a Billie 🤑",
-          isDone: false
+          isDone: false,
+          focused: false
         },
         {
           id: 3,
           task: "To-Do App, better Done than Pefect",
-          isDone: true
+          isDone: true,
+          focused: false
         },
         {},
         {},
@@ -59,29 +64,24 @@ class App extends Component {
     this.eatCookies = this.eatCookies.bind(this);
     this.completedTasksCounter = this.completedTasksCounter.bind(this);
     this.taskCounter = this.taskCounter.bind(this);
+    this.changeInputFocus = this.changeInputFocus.bind(this);
   }
   componentDidUpdate() {}
 
+  changeInputFocus(taskIndex) {
+    let tasksArray = this.state.tasksList;
+    tasksArray[taskIndex + 1].focused = true;
+    this.setState({ tasksList: tasksArray });
+  }
   update(updatedTask, i) {
     console.log(updatedTask, i);
     let tasksArray = this.state.tasksList;
     tasksArray[i].task = updatedTask;
     this.setState({ tasksList: tasksArray });
     this.taskCounter();
+    this.changeInputFocus(i);
   }
 
-  // delete(i) {
-  //   console.log("delete() called");
-  //   console.log("state.tasks.tasksList before splice", this.state.tasksList);
-
-  //   this.state.tasksList.splice(i, 1);
-  //   this.state.tasksList.push({});
-  //   this.setState({ tasksList: this.state.tasksList });
-  //   console.log(
-  //     "state.tasks.tasksList AFTER splice & setState",
-  //     this.state.tasksList
-  //   );
-  // }
   delete(i) {
     let currentTaskList = this.state.tasksList;
     currentTaskList[i] = {};
@@ -152,6 +152,7 @@ class App extends Component {
         checkMarkStyle={checkMarkStyle}
         textDoneStyle={textDoneStyle}
         totalTaskCounter={this.taskCounter}
+        focused={this.state.focused}
       />
     );
   }
