@@ -27,12 +27,10 @@ class TaskLineItem extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.taskInput) {
-      let currentInput;
-      if (this.state.editing) {
-        currentInput = this.selectedInput.current;
-        currentInput.focus();
-      }
+    let currentInput;
+    if (this.state.taskInput && this.state.editing) {
+      currentInput = this.selectedInput.current;
+      currentInput.focus();
     }
   }
 
