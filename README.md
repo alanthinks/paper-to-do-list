@@ -8,6 +8,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Really enjoyed making this mini app. As a Junior Developer it was tough sometime's getting the counters to include/not include the tasks that were being "completed" or "deleted", it was also challenging getting it to be responsive partly because I did not follow a "mobile-first" approach when creating it and because of the way the app is visually designed.
 
-Overall though really enjoyed programming this feel proud of even a "simple" app such as this.
+Overall though I really enjoyed programming this feel and proud of even a "simple" app such as this one.
 
 _**Side Note: I highly recommend you ~Eat The Cookies~ 😉**_
