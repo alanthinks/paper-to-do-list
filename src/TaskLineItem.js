@@ -118,7 +118,7 @@ class TaskLineItem extends Component {
           </div>
           <form className="item-box-edit" onSubmit={this.save}>
             <input
-              maxLength="22"
+              maxLength="35"
               ref={this.selectedInput}
               onChange={e => this.setState({ taskInput: e.target.value })}
               value={this.state.taskInput}
@@ -135,7 +135,7 @@ class TaskLineItem extends Component {
       <div className="item-box">
         <form className="item-box-blank initial" onSubmit={this.save}>
           <input
-            maxLength="22"
+            maxLength="35"
             ref={this.selectedInput}
             onChange={e => this.setState({ taskInput: e.target.value })}
             value={this.state.taskInput}
