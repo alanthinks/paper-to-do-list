@@ -2,7 +2,7 @@
 
 ### A React App by @AlanThinks
 
-👉 Check out the [Live Sample Here](http://alanthinks.github.io/projects/paper-to-do-list-app/index.html)
+👉 Check out the [Live Sample Here](http://alanthinks.com/projects/paper-to-do-list-app/index.html)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
